@@ -17,7 +17,7 @@ hc-koa EA 版本 (fork from hc-bee) TODO:
 
 
 
-# hc-bee
+# hc-koa
 > recommended framework to develop service on honeycomb.
 
 [![Build Status][travis-image]][travis-url]

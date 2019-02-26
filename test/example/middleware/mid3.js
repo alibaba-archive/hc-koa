@@ -1,1 +1,1 @@
-module.exports = (app, opt) => {return (req, res, next) => {next()}};
+module.exports = (app, opt) => {return async (ctx, next) => {await next()}};

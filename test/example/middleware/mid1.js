@@ -1,1 +1,1 @@
-module.exports = (req, res, next) => {next()};
+module.exports = async (ctx, next) => { await next()};

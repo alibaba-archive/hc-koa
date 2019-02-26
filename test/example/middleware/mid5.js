@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = (opt) => {
-  function Mid5(req, res, next) {
-    res.write(opt.overwrite || 'mid5Default');
+  async function Mid5(ctx, next) {
+    ctx.response.write(opt.overwrite || 'mid5Default');
     next();
   };
 
-  Mid5.match = function (req) {
-    return req.url.indexOf('switchMid=mid5') !== -1;
+  Mid5.match = function (ctx) {
+    return ctx.url.indexOf('switchMid=mid5') !== -1;
   };
 
   return Mid5;

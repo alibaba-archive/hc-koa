@@ -12,11 +12,11 @@ function* test() {
   return yield p;
 }
 /**
- * @api /test
+ * @api /*
  */
-exports.test = function (req, callback) {
+exports.test = async function (ctx) {
   log.info('test for log instance is ok');
-  callback(null, 'hello', 'text');
+  ctx.body = 'Hello World';
 };
 
 /**
