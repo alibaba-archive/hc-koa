@@ -12,7 +12,7 @@ function* test() {
   return yield p;
 }
 /**
- * @api /*
+ * @api /test
  */
 exports.test = async function (ctx) {
   log.info('test for log instance is ok');
@@ -22,32 +22,32 @@ exports.test = async function (ctx) {
 /**
  * @api /hi/*
  */
-exports.hi = function (req, callback) {
+exports.hi = async function (ctx) {
   log.info('test for log instance is ok');
-  callback(null, 'hi', 'text');
+  ctx.body = 'hi test';
 };
 /**
  * @api /ctrl
  */
-exports.ctrl = function (req, callback) {
-  callback(null, {ok: 1});
+exports.ctrl = function (ctx) {
+  ctx.body = {ok: 1};
 };
 
 /**
- * @api /genCtrl
+ *  /genCtrl
  */
-exports.genCtrl = function* (req) {
-  let v = yield test;
-  let query = req.query;
-  switch (query.test) {
-    case 'error':
-      return new Error('error_message');
-    case 'object_return':
-      return {hello: v};
-    default:
-      return [null, {hello: v}];
-  }
-};
+// exports.genCtrl = function* (req) {
+//   let v = yield test;
+//   let query = req.query;
+//   switch (query.test) {
+//     case 'error':
+//       return new Error('error_message');
+//     case 'object_return':
+//       return {hello: v};
+//     default:
+//       return [null, {hello: v}];
+//   }
+// };
 
 /**
  * @api /error
@@ -60,10 +60,11 @@ exports.error = function (req, callback) {
  *
  * @api /timeout
  */
-exports.timeout = function (req, callback) {
-  setTimeout(function () {
-    callback(null, 'hello');
-  }, 3000);
+exports.timeout = async function (ctx) {
+  await new Promise(resolve => {
+    setTimeout(resolve, 1000);
+  });
+  ctx.body = 'hello';
 };
 
 

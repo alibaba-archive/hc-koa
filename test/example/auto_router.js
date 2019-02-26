@@ -31,6 +31,7 @@ module.exports = function (router, process) {
   }
   router.get('/timeout', process(ctrls['./controller/test.js'].timeout, 'public', true));
   router.get('/time', process(ctrls['./controller/test.js'].time, 'public', true));
+  router.get('/test', process(ctrls['./controller/test.js'].test, 'public', true));
   router.get('/test_combine3', process(ctrls['./controller/test.js'].combine3, 'public', false));
   router.get('/test_combine2', process(ctrls['./controller/test.js'].combine2, 'public', false));
   router.get('/test_combine1', process(ctrls['./controller/test.js'].combine1, 'public', false));
@@ -42,7 +43,6 @@ module.exports = function (router, process) {
   router.get('/testCreated', process(ctrls['./controller/test.js'].testCreated, 'public', false));
   router.get('/log_trace_id', process(ctrls['./controller/test.js'].log_trace_id, 'public', true));
   router.get('/hi/*', process(ctrls['./controller/test.js'].hi, 'public', true));
-  router.get('/genCtrl', process(ctrls['./controller/test.js'].genCtrl, 'public', true));
   router.get('/exception', process(ctrls['./controller/test.js'].exception, 'public', true));
   router.get('/error', process(ctrls['./controller/test.js'].error, 'public', true));
   router.get('/error_generator', process(ctrls['./controller/test.js'].error_generator, 'public', true));
@@ -52,5 +52,4 @@ module.exports = function (router, process) {
   router.get('/callback_error_err', process(ctrls['./controller/test.js'].callbackErrorErr, 'public', true));
   router.get('/callback_error_404', process(ctrls['./controller/test.js'].callbackError404, 'public', true));
   router.get('/callback_error_403', process(ctrls['./controller/test.js'].callbackError403, 'public', true));
-  router.get('/*', process(ctrls['./controller/test.js'].test, 'public', true));
 };
