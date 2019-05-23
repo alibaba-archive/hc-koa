@@ -1,1 +1,1 @@
-module.exports = () => {return (req, res, next) => {next()}}
+module.exports = () => { return (req, res, next) => { next(); }; };

@@ -3,6 +3,7 @@ coverage/
 test/example/out
 test/example/runtime_config.json
 test/example/auto_config.json
+test/example/auto_router.js
 .idea/
 test/example/logs/
 .vscode

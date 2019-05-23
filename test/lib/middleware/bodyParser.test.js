@@ -4,9 +4,9 @@ const should = require('should'); // eslint-disable-line
 const app = require('../../env').app;
 const supertest = require('supertest-session');
 
-function getBody (length) {
+function getBody(length) {
   var str = '';
-  while(length--){
+  while (length--) {
     str += 'a';
   }
   return str;
@@ -43,7 +43,7 @@ describe('bodyParser.test.js', function () {
           request.post('/test/test_body_parser')
             .set('x-csrf-token', token)
             .set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
-            .send(getBody(512*1024))
+            .send(getBody(512 * 1024))
             .expect(200)
             .expect('success')
             .end(done);
@@ -60,7 +60,7 @@ describe('bodyParser.test.js', function () {
           request.post('/test/test_body_parser')
             .set('x-csrf-token', token)
             .set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
-            .send(getBody(512*1024+1))
+            .send(getBody(512 * 1024 + 1))
             .expect(413)
             .end(done);
         });
@@ -76,7 +76,7 @@ describe('bodyParser.test.js', function () {
           request.post('/test/test_body_parser')
             .set('x-csrf-token', token)
             .send({
-              name: getBody(511*1024)
+              name: getBody(511 * 1024)
             })
             .expect(200)
             .expect('success')
@@ -95,7 +95,7 @@ describe('bodyParser.test.js', function () {
             .set('x-csrf-token', token)
             .set('Content-Type', 'application/json; charset=UTF-8')
             .send({
-              name: getBody(512*1024)
+              name: getBody(512 * 1024)
             })
             .expect(413)
             .end(done);

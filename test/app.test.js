@@ -147,14 +147,14 @@ describe('app.test.js', () => {
         .end(done);
     });
 
-    it ('should error in middleware response correctly.', function (done) {
+    it('should error in middleware response correctly.', function (done) {
       request.get('/test/test_err_middleware')
         .expect(500)
         .expect(/code: .*,\nmessage: .*/)
         .end(done);
     });
 
-    it ('should error in middleware response correctly.', function (done) {
+    it('should error in middleware response correctly.', function (done) {
       request.get('/test/test_err_middleware')
         .set('Accept', 'application/json')
         .expect(500)
@@ -174,7 +174,7 @@ describe('app.test.js', () => {
           res.body.should.eql({
             code: 'SUCCESS',
             data: 'ok'
-          })
+          });
         })
         .end(done);
     });
@@ -195,7 +195,7 @@ describe('app.test.js', () => {
           res.body.should.eql({
             code: 'SUCCESS',
             data: 'ok'
-          })
+          });
         })
         .end(done);
     });
@@ -216,7 +216,7 @@ describe('app.test.js', () => {
           res.body.should.eql({
             code: 'SUCCESS',
             data: 'ok'
-          })
+          });
         })
         .end(done);
     });
