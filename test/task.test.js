@@ -14,5 +14,4 @@ describe('task.test.js', () => {
       finalConfig.root.should.eql(path.join(__dirname, './taskExample'));
     });
   });
-
 });

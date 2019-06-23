@@ -53,7 +53,7 @@ describe('cors.test.js', function () {
   });
 
   it('should have allow-origin header', function (done) {
-    var req, res, next, config;
+    var req; var res; var next; var config;
     config = {
       allowOrigins: ['**.aliyun.com']
     };
@@ -71,7 +71,7 @@ describe('cors.test.js', function () {
   });
 
   it('should not have allow-origin header', function (done) {
-    var req, res, next, config;
+    var req; var res; var next; var config;
     config = {
       allowOrigins: ['**.aliyun.com']
     };
@@ -88,7 +88,7 @@ describe('cors.test.js', function () {
   });
 
   it('should have allow-method header', function (done) {
-    var req, res, next, config;
+    var req; var res; var next; var config;
     config = {
       allowOrigins: ['**.aliyun.com']
     };

@@ -4,6 +4,9 @@ install:
 test:
 	@./node_modules/.bin/_mocha -t 25000 -R spec --recursive ./test
 
+lint:
+	@./node_modules/.bin/eslint . --fix
+
 test-cov:
 	@./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -t 25000 -R spec --recursive ./test
 

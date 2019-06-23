@@ -1,7 +1,7 @@
 'use strict';
 const litelog = require('litelog');
 
-//获取打印日志的位置
+// 获取打印日志的位置
 function getPos(fix) {
   var stack = new Error().stack.split('\n');
   var line = stack[fix];
@@ -28,7 +28,7 @@ var mockLog = {
       };
       this.logLevels.forEach((level) => {
         this.logInstance[name][level] = function (...args) {
-          //获取 log 的打印位置，和打印的内容
+          // 获取 log 的打印位置，和打印的内容
           var pos = getPos(3);
           args.unshift(litelog.getTime());
           this._log(name, level.toUpperCase(), args, pos);
@@ -59,11 +59,11 @@ function exit() {
 
 process.on('exit', exit);
 
-//返回的是一个 function，根据 name 返回 log对象
+// 返回的是一个 function，根据 name 返回 log对象
 var mockLogFunc = function (name) {
   return mockLog.get(name);
 };
-//无需执行，mockLogFunc就和 mockLogFunc.get('sys')有一样的方法
+// 无需执行，mockLogFunc就和 mockLogFunc.get('sys')有一样的方法
 mockLogFunc.__proto__ = mockLog.get('sys');
 
 module.exports = mockLogFunc;
@@ -81,10 +81,10 @@ module.exports.init = (opt, debug) => {
     throw new Error('log should have method: debug, info, warn, error');
   }
 
-  //初始化完毕后调用真正的 log 对象打印之前保存的 log 信息
+  // 初始化完毕后调用真正的 log 对象打印之前保存的 log 信息
   if (mockLog.messageInfoCache.length > 0) {
     mockLog.messageInfoCache.forEach((messageInfo) => {
-      //messageInfo[0]是 log 对象的名字，如果实际的 log对象中没有，就是 sys
+      // messageInfo[0]是 log 对象的名字，如果实际的 log对象中没有，就是 sys
       if (Array.isArray(messageInfo[2])) {
         messageInfo[2].shift();
       }
@@ -94,14 +94,14 @@ module.exports.init = (opt, debug) => {
     mockLog.messageInfoCache = [];
   }
   process.removeListener('exit', exit);
-  //如果存在初始化完成之前的 log 对象，需要把这些对象的所有方法替换成真正的 log 对象的方法
+  // 如果存在初始化完成之前的 log 对象，需要把这些对象的所有方法替换成真正的 log 对象的方法
   Object.keys(mockLog.logInstance).forEach((name) => {
     let oldLog = mockLog.logInstance[name];
     let newLog = log.get(name);
     mockLog.logLevels.forEach((level) => {
       oldLog[level] = (...args) => {
         newLog._log(level, args);
-      }
+      };
     });
   });
 
