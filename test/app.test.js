@@ -48,7 +48,7 @@ describe('app.test.js', () => {
 
   describe('test middleware extends', () => {
     const request = supertest(app.address);
-    it('should work fine', function (done) {
+    it.only('should work fine', function (done) {
       request.get('/test/static2/index.html')
         .expect(200)
         .expect(/hello/)

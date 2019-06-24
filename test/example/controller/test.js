@@ -58,7 +58,7 @@ exports.error = function (req, callback) {
 
 /**
  *
- * @api /timeout
+ * api /timeout
  */
 exports.timeout = async function (ctx) {
   await new Promise(resolve => {
@@ -69,7 +69,7 @@ exports.timeout = async function (ctx) {
 
 
 /**
- * @api /time
+ * api /time
  */
 exports.time = function* (req) {
   let p = new Promise(function (ok, err) {

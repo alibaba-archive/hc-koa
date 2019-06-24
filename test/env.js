@@ -55,78 +55,76 @@ const app = require(path.join(__dirname, './example/app'));
 //   root: path.join(__dirname, '../example')
 // });
 
-// app.loadMiddleware({
-//   enable: true,
-//   id: 'custom_inline_middleware',
-//   config: {
-//     name: 'custom_inline_middleware'
-//   },
-//   module: function (app, config) {
-//     return function* (req, res, next) {
-//       yield {};
-//       req.testCustom = function () {
-//         return config.name;
-//       };
-//       next();
-//     };
-//   }
-// });
+app.loadMiddleware({
+  enable: true,
+  id: 'custom_inline_middleware',
+  config: {
+    name: 'custom_inline_middleware'
+  },
+  module: function (app, config) {
+    return function (ctx, next) {
+      ctx.testCustom = function () {
+        return config.name;
+      };
+      next();
+    };
+  }
+});
 
-// app.loadMiddleware({
-//   enable: true,
-//   id: 'test_generator_middleware',
-//   config: {
-//     name: 'test_generator_middleware'
-//   },
-//   module: function (app, config) {
-//     return function* (req, res, next) {
-//       yield {};
-//       req.testGenerator = function () {
-//         return config.name;
-//       };
-//       next();
-//     };
-//   }
-// });
+app.loadMiddleware({
+  enable: true,
+  id: 'test_generator_middleware',
+  config: {
+    name: 'test_generator_middleware'
+  },
+  module: function (app, config) {
+    return function (ctx, next) {
+      ctx.testGenerator = function () {
+        return config.name;
+      };
+      next();
+    };
+  }
+});
 
-// app.loadMiddleware({
-//   enable: true,
-//   id: 'name_from_config',
-//   config: {
-//     name: 'name_from_config'
-//   },
-//   module: function (app, config) {
-//     return function (req, res, next) {
-//       req.testWithConfig = function () {
-//         return config.name;
-//       };
-//       next();
-//     };
-//   }
-// });
+app.loadMiddleware({
+  enable: true,
+  id: 'name_from_config',
+  config: {
+    name: 'name_from_config'
+  },
+  module: function (app, config) {
+    return function (ctx, next) {
+      ctx.testWithConfig = function () {
+        return config.name;
+      };
+      next();
+    };
+  }
+});
 
-// app.listMiddleware();
+app.listMiddleware();
 
-// app.sortMiddleware([
-//   'static',
-//   'static2',
-//   'referer',
-//   'cookieParser',
-//   'bodyParser',
-//   'csrf',
-//   'log',
-//   'cookieSession',
-//   'custom_inline_middleware',
-//   'test_generator_middleware',
-//   'name_from_config',
-//   'custumMid0',
-//   'custumMid1',
-//   'custumMid2',
-//   'custumMid3',
-//   'combine1',
-//   'combine2',
-//   'combine3'
-// ]);
+app.sortMiddleware([
+  'static',
+  'static2',
+  'referer',
+  'cookieParser',
+  'bodyParser',
+  'csrf',
+  'log',
+  'cookieSession',
+  'custom_inline_middleware',
+  'test_generator_middleware',
+  'name_from_config',
+  'custumMid0',
+  'custumMid1',
+  'custumMid2',
+  'custumMid3',
+  'combine1',
+  'combine2',
+  'combine3'
+]);
 
 app.address = 'http://localhost:12345';
 

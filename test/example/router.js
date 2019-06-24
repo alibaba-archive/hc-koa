@@ -8,11 +8,11 @@ module.exports = function (router) {
     });
   });
 
-  router.get('/test_middleware', function (req, res, next) {
-    if (!req[req.query.q]) {
+  router.get('/test_middleware', function (ctx, next) {
+    if (!ctx[ctx.query.q]) {
       return next('method not found');
     }
-    res.end(req[req.query.q]());
+    ctx.body = ctx[ctx.query.q]();
   });
 
   router.get('/test_cookie_session', function (req, res) {
