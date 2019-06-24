@@ -102,10 +102,8 @@ exports.log_trace_id = function (req, callback) {
 /**
  * @api /exception
  */
-exports.exception = function (req, callback) {
-  // setTimeout(function () {
-  throw new Error('custom controller exception for test');
-  // }, 10);
+exports.exception = function (ctx, next) {
+    throw new Error(500,'custom controller exception for test');
 };
 
 /**
