@@ -133,7 +133,7 @@ module.exports = {
   },
   extension: {
     redirect: {
-      enable: false,
+      enable: true,
       config: {
         allowDomains: [
           'localhost',
@@ -141,6 +141,9 @@ module.exports = {
           'test.alibaba.com'
         ]
       }
+    },
+    timer: {
+      enable: true
     }
   }
 };

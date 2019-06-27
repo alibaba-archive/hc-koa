@@ -1,1 +1,1 @@
-module.exports = (opt) => {return async (ctx, next) => {await next()}}
+module.exports = (opt) => { return async (ctx, next) => { await next(); }; };

@@ -62,11 +62,11 @@ app.loadMiddleware({
     name: 'custom_inline_middleware'
   },
   module: function (app, config) {
-    return function (ctx, next) {
+    return async function (ctx, next) {
       ctx.testCustom = function () {
         return config.name;
       };
-      next();
+      await next();
     };
   }
 });
@@ -78,11 +78,11 @@ app.loadMiddleware({
     name: 'test_generator_middleware'
   },
   module: function (app, config) {
-    return function (ctx, next) {
+    return async function (ctx, next) {
       ctx.testGenerator = function () {
         return config.name;
       };
-      next();
+      await next();
     };
   }
 });
@@ -94,11 +94,11 @@ app.loadMiddleware({
     name: 'name_from_config'
   },
   module: function (app, config) {
-    return function (ctx, next) {
+    return async function (ctx, next) {
       ctx.testWithConfig = function () {
         return config.name;
       };
-      next();
+      await next();
     };
   }
 });

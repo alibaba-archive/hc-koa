@@ -1,5 +1,4 @@
 'use strict';
-console.log(2341234);
 
 module.exports = {
   middleware: {
