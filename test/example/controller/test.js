@@ -233,7 +233,7 @@ async function request(url, ctx) {
  */
 exports.testProxyStatusCode201 = async function (ctx) {
   let res = await request('http://localhost:12345/test/testCreated', ctx);
-  ctx.body = res;
+  this.body = 'aaa';
   // urllib.request('http://localhost:12345/test/testCreated', {
   //   streaming: true,
   //   stream: ctx.req

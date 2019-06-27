@@ -3,15 +3,15 @@ hc-koa EA 版本 (fork from hc-bee) TODO:
 请搜索项目中`TODO`检索特性未完成的工作，大体有
 
 
-1. 取代原来的error handler
 
-2. 重新梳理middleware和extension (finished)
 
-3. api-annotation包修改
+1. api-annotation包修改
 
-4. 重写测试用例做覆盖 (nearly finished)
+2. honeycomb-cli 添加改造
 
-5. honeycomb-cli 添加改造
+3. eslint fix
+
+4. test full(nearly) cover
 
 
 
